@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class=" row mynavbar">
+        <div class="centerify">
+            Jobimate.in
+        </div>
+        <div class="toggler">
+            <i class="fa fa-bars fa-lg"></i>
+            <!-- <i class="fa fa-user fa-5x"></i> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            search
+        </div>
+        <div class="col">
+            frsherbutton
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <app-jobitem *ngFor="let i of jobs" [job]="i"></app-jobitem>
+        </div>
+    </div>
+</div>
