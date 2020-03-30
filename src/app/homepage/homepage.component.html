@@ -1,24 +1,86 @@
-<div class="container-fluid">
-    <div class=" row mynavbar">
+<nav class="navbar1">
+    <div class="brand-title">
+        <img class="logoctrl" src="../../assets/jobimatelogo.png" alt="">
+    </div>
+    <a class="toggle-button" (click)="opencollapse()"><i class="fa fa-bars fa-lg"></i></a>
+    <div class="navbar-links">
+        <ul>
+            <li><a>Home</a></li>
+            <li><a>About</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </div>
+    <div class="navbar-links mynav" *ngIf='collapse' [@fadeAnimation]="'in'">
+        <ul>
+            <li><a>Home</a></li>
+            <li><a>About</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid ">
+    <!-- <div class=" row mynavbar">
         <div class="centerify">
-            Jobimate.in
+            <div>
+                <img class="logoctrl" src="../../assets/jobimatelogo.png" alt="">
+            </div>
         </div>
         <div class="toggler">
-            <i class="fa fa-bars fa-lg"></i>
-            <!-- <i class="fa fa-user fa-5x"></i> -->
+            <div>
+                <i class="fa fa-bars fa-lg"></i>
+            </div>
+        </div>
+    </div> -->
+    <div class="row secondrow">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <i class="fa fa-search positionfixer"></i>
+                    <input class="form-control searchctrl" type="text" (keyup)="searchfn($event)" placeholder="Search for jobs...">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <i class="fa fa-map-marker positionfixer"></i>
+                    <div class="input-group">
+                        <select class="custom-select selectctrl" id="inputGroupSelect04"
+                            aria-label="Example select with button addon">
+                            <option selected>All Location</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col flexer ">
+                    <div>
+                        Fresher Only
+                    </div>
+
+                    <div >
+                        <label class="switch">
+                            <input type="checkbox" (change)="fresherFn($event)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            search
-        </div>
-        <div class="col">
-            frsherbutton
+            <div class="titelclass">
+                Recent Jobs
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <app-jobitem *ngFor="let i of jobs" [job]="i"></app-jobitem>
+            <div *ngFor="let i of jobs" [@fadeAnimation]="'in'">
+                <app-jobitem [job]="i"></app-jobitem>
+            </div>
         </div>
     </div>
 </div>
