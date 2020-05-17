@@ -9,10 +9,13 @@ export class JobitemComponent implements OnInit {
 
   @Input() job;
 
+  id;
+
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.job);
+    this.id = this.job.id;
     
   }
 

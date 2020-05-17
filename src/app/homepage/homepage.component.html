@@ -1,42 +1,15 @@
-<nav class="navbar1">
-    <div class="brand-title">
-        <img class="logoctrl" src="../../assets/jobimatelogo.png" alt="">
-    </div>
-    <a class="toggle-button" (click)="opencollapse()"><i class="fa fa-bars fa-lg"></i></a>
-    <div class="navbar-links">
-        <ul>
-            <li><a>Home</a></li>
-            <li><a>About</a></li>
-            <li><a>Contact</a></li>
-        </ul>
-    </div>
-    <div class="navbar-links mynav" *ngIf='collapse' [@fadeAnimation]="'in'">
-        <ul>
-            <li><a>Home</a></li>
-            <li><a>About</a></li>
-            <li><a>Contact</a></li>
-        </ul>
-    </div>
-</nav>
 <div class="container-fluid ">
-    <!-- <div class=" row mynavbar">
-        <div class="centerify">
-            <div>
-                <img class="logoctrl" src="../../assets/jobimatelogo.png" alt="">
-            </div>
-        </div>
-        <div class="toggler">
-            <div>
-                <i class="fa fa-bars fa-lg"></i>
-            </div>
-        </div>
-    </div> -->
+
     <div class="row secondrow">
         <div class="col">
             <div class="row">
                 <div class="col">
-                    <i class="fa fa-search positionfixer"></i>
-                    <input class="form-control searchctrl" type="text" (keyup)="searchfn($event)" placeholder="Search for jobs...">
+                    <!-- <i class="fa fa-search positionfixer"></i> -->
+                    <input id="searchid" class="form-control searchctrl" [(ngModel)]="searchValue" type="text"
+                        placeholder="Search for jobs..." (keyup.enter)="keyupfn($event)" #searchidraw>
+                    <i class="fa fa-times positionfixer2" (click)="clearfn()"></i>
+                    <div class="thin-line positionfixer3"></div>
+                    <i class="fa fa-search positionfixer4" (click)="searchfn(searchidraw.value)"></i>
                 </div>
             </div>
             <br>
@@ -45,11 +18,11 @@
                     <i class="fa fa-map-marker positionfixer"></i>
                     <div class="input-group">
                         <select class="custom-select selectctrl" id="inputGroupSelect04"
-                            aria-label="Example select with button addon">
-                            <option selected>All Location</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            aria-label="Example select with button addon" (change)="locSelect($event)">
+                            <option value="0" selected>All Location</option>
+                            <option value="Kochi">Kochi</option>
+                            <option value="Calicut">Calicut</option>
+                            <option value="Trivandrum">Trivandrum</option>
                         </select>
                     </div>
                 </div>
@@ -58,7 +31,7 @@
                         Fresher Only
                     </div>
 
-                    <div >
+                    <div>
                         <label class="switch">
                             <input type="checkbox" (change)="fresherFn($event)">
                             <span class="slider round"></span>
@@ -74,6 +47,17 @@
             <div class="titelclass">
                 Recent Jobs
             </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!loaded">
+        <div class="col">
+            <div class="placement">
+                <div class="spinner-border text-success " role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+
+            </div>
+
         </div>
     </div>
     <div class="row">

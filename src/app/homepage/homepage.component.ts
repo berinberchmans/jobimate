@@ -10,20 +10,30 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['./homepage.component.css'],
   animations: [
     trigger('fadeAnimation', [
-      state('in', style({opacity: 1})),
-    transition(':enter', [
-      style({ opacity: 0 }), animate('100ms', style({ opacity: 1 }))]
-    ),
-    transition(':leave',
-      [style({ opacity: 1 }), animate('100ms', style({ opacity: 0 }))]
-    )
-  ])]
+      state('in', style({ opacity: 1 })),
+      transition(':enter', [
+        style({ opacity: 0 }), animate('100ms', style({ opacity: 1 }))]
+      ),
+      transition(':leave',
+        [style({ opacity: 1 }), animate('100ms', style({ opacity: 0 }))]
+      )
+    ])]
 })
 export class HomepageComponent implements OnInit {
   jobs;
   backup;
 
+  loaded=false;
+
+  searchValue ='';
   collapse = false;
+
+  fresher = false;
+  locselected = 0;
+  iflocselected = false;
+  isSearched = false;
+  valSearched = '';
+ 
 
   constructor(private wpService: WordpressService) { }
 
@@ -31,33 +41,91 @@ export class HomepageComponent implements OnInit {
 
     this.wpService.getJobs().subscribe(x => {
       this.backup = x;
+
       this.jobs = x;
+      this.loaded = true;
     });
 
   }
-  searchfn(event){
 
-    console.log(event.target.value);
-    let a1 = event.target.value.toLowerCase();
 
-    if(a1 && a1.length>2){
-       this.jobs = this.jobs.filter(data => data.company.toLowerCase().includes(a1) || data.position.toLowerCase().includes(a1));
+  filterFn(){
+    let xjobs = this.backup;
+    if(this.fresher){
+        xjobs = this.backup.filter(data => data.fresher == 1);
+    };
+    if(this.iflocselected){
+         xjobs = xjobs.filter(data => data.location == this.locselected);
     }
-     
+    if(this.isSearched){
+         xjobs = xjobs.filter(data => data.company.toLowerCase().includes(this.valSearched) || data.position.toLowerCase().includes(this.valSearched));
+    }
+    this.jobs = xjobs;
+    
+
   }
 
-  opencollapse(){
-    this.collapse = !this.collapse;
-
+  keyupfn(event){
+  this.searchfn(event.target.value);  
   }
+  searchfn(event) {
+
+    console.log(event);
+    let a1 = event.toLowerCase();
+
+    if (a1 && a1.length > 2) {
+      this.isSearched =true;
+      this.valSearched = a1;
+      this.filterFn();
+    }
+
+    if(a1 ==''){
+      this.isSearched =false;
+      this.filterFn();
+    }
+
+    // if (event.code == 'Enter') {    }
+  }
+
+  clearfn(){
+    console.log('13');
+    this.isSearched = false;
+    this.valSearched ='';
+    this.searchValue =null;
+    // this.jobs = this.backup;
+    this.filterFn();
+  }
+
+
+
+  locSelect(event) {
+    let val = event.target.value;
+    console.log(val);
+    if(val ==0){
+      this.iflocselected = false;
+      this.filterFn();
+    }else{
+
+      this.iflocselected = true;
+      this.locselected = val;
+      this.filterFn();
+    }
+      // res = this.backup.filter(data => data.location == val);
+  }
+
+
 
   fresherFn(event) {
     console.log(event.target.checked);
 
     if (event.target.checked) {
-      this.jobs = this.backup.filter(data => data.fresher == 1);
+      // this.jobs = this.backup.filter(data => data.fresher == 1);
+      this.fresher = true;
+      this.filterFn();
     } else {
-      this.jobs = this.backup;
+      // this.jobs = this.backup;
+      this.fresher = false;
+      this.filterFn();
     }
 
   }

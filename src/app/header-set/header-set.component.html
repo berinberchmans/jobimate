@@ -1,0 +1,25 @@
+<div class="headerbg">
+    <nav class="navbar1">
+        <div class="brand-title">
+
+            <a routerLink="/home"> <img class="logoctrl" src="../assets/jobimatelogo.png" alt=""></a>
+
+        </div>
+        <a class="toggle-button" (click)="opencollapse()"><i class="fa fa-bars fa-lg"></i></a>
+        <div class="navbar-links">
+            <ul>
+                <li routerLink="/home"><a>Home</a></li>
+                <!-- <li><a>About</a></li> -->
+                <li routerLink="/contact"><a>Contact</a></li>
+            </ul>
+        </div>
+       
+    </nav>
+</div>
+<div class="navbar-links mynav" *ngIf='collapse' [@fadeAnimation]="'in'">
+    <ul>
+        <li routerLink="/home" (click)="opencollapse()"><a>Home</a></li>
+        <!-- <li (click)="opencollapse()"><a>About</a></li> -->
+        <li routerLink="/contact" (click)="opencollapse()"><a>Contact</a></li>
+    </ul>
+</div>

@@ -1,23 +1,39 @@
-<div class="card card-edit">
+<div class="card card-edit" [routerLink]="['/job',id]">
     <div class="card-body">
         <div class="row">
             <div class="col-auto">
-                <img class="imgctrl" src="http://localhost/jobimate/wp-content/uploads/2020/03/logo.gif" alt="">
+                <img class="imgctrl" src="{{job?.company_logo.guid}}" alt="">
             </div>
             <div class="col">
                 <div class="row">
                     <div class="col">
-                        {{job?.position}}
+                        <div class="title">
+                            {{job?.position}}
+                            
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{job?.location}}
+                        <div class="subinfo">
+                            {{job?.company}}
+                        </div>
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{job?.experience}}
+                        <div class="subinfo">
+                            <i class="fa fa-map-marker icons"> </i> {{job?.location}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="subinfo">
+                            <i class="fa fa-briefcase icons"></i> Exp :{{job?.experience}}
+                        </div>
+                       
                     </div>
                 </div>
             </div>

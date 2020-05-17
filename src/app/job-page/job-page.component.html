@@ -1,0 +1,116 @@
+<div class="container-fluid ">
+    <div class="space">
+        <div class="placement"  *ngIf="!loaded">
+            <div class="spinner-border text-success " role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <div *ngIf="loaded"  [@fadeAnimation]="'in'">
+            <div class="row">
+                <div class="col">
+                    <div class="title">
+                        {{jobinfo?.position}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        {{jobinfo?.company}}
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <!-- <hr> -->
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        <i class="fa fa-map-marker icons"> </i> {{jobinfo?.location}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        <i class="fa fa-briefcase icons"></i> Exp :{{jobinfo?.experience}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        <i class="fa fa-calendar icons"></i> Posted on {{ jobinfo?.date | date }}
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subtitle">
+
+                        Job description
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        {{jobinfo?.job_description}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        <i class="fa fa-envelope icons"></i> Email {{jobinfo?.email}}
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        <i class="fa fa-phone icons"></i> Phone {{jobinfo?.phone}}
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        <i class="fa fa-paperclip icons"></i> Brochure<a href="{{jobinfo?.brochure.guid}}"
+                            download="brochure"> (Download)</a>
+                    </div>
+
+                    <!-- <a target="_self" href="{{jobinfo?.brochure.guid}}" download="image.jpeg">here</a> -->
+                    <!-- <a href="" target="_self" download>Click</a> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        <i class="fa fa-calendar icons"></i> Date of interview {{jobinfo?.date_of_walkin}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subinfo">
+                        <i class="fa fa-link icons"></i> <a href="{{jobinfo?.company_website}} | safeUrl">
+                            {{jobinfo?.company_website}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col">
+                backlog
+            </div>
+        </div> -->
+    </div>
+</div>

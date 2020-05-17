@@ -16,22 +16,25 @@ export class WordpressService {
 
 
   
+  getJob(id): Observable<any> {
+    return this.http.get<Object[]>(this.url + '/job/'+id).pipe(
+      map(jb => {
+        console.log(jb);
+        return jb;
+      }),
+    );
+  }
+
+  
+
   getJobs(): Observable<any> {
 
-    // let hparams = new HttpParams({ fromObject: params ? <any>params : { x: 'y' } });
-    // let hparams2 =  new HttpParams({  fromObject: "response" });
-
-    // let newparams = { params: hparams };
     return this.http.get<Object[]>(this.url + '/job').pipe(
       map(jbs => {
         console.log(jbs);
-        
-        // let retVal = new Array();
-        // for (let o of orders)
-        //   retVal.push(new WooOrder(o));
+
         return jbs;
       }),
-      // catchError(this.handleError)
     );
   }
 }

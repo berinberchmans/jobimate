@@ -1,0 +1,31 @@
+.container-fluid{
+
+    padding: 0px;
+}
+.space{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 19px;
+    height: 84vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.imgctrl{
+    width: 20vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+
+
+}
+
+@media (max-width: 450px){
+    .imgctrl{
+        width: 300px;
+    }
+}

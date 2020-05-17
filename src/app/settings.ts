@@ -2,7 +2,7 @@
 
 export const Settings ={
 
-    wpurl: 'http://localhost/jobimate/wp-json/wp/v2',
+    wpurl: 'https://jobimate.in/wp/wp-json/wp/v2',
     // wcurl2: 'http://shop.com//wp-json/cocart/v1',
     // wcurl3: 'http://shop.com//wp-json/wc/v2',
     // jurl: 'http://shop.com/wp-json/jwt-auth/v1/token',

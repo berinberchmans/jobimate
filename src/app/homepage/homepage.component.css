@@ -20,11 +20,6 @@
     /* padding: 20px; */
 }
 
-.logoctrl{
-    /* width: 50px; */
-
-    height: 35px;
-}
 
 .switch {
     position: relative;
@@ -108,9 +103,12 @@
     border-radius: 25px;
     padding-bottom: 0px;
     padding-top: 0px;
-    padding-left:40px ;
+    padding-right:80px ;
 
   }
+
+
+
 .positionfixer{
     position: absolute;
     top: 11px;
@@ -118,6 +116,32 @@
     z-index: 995;
 }
 
+.positionfixer2{
+    position: absolute;
+    top: 11px;
+    right: 70px;
+    z-index: 995;
+    cursor: pointer;
+}
+.positionfixer3{
+    position: absolute;
+    top: 11px;
+    right: 55px;
+    z-index: 995;
+}
+.positionfixer4{
+    position: absolute;
+    top: 11px;
+    right: 30px;
+    color: #73c594;
+    z-index: 995;
+    cursor: pointer;
+}
+.thin-line{
+  border-left: 1px solid grey;
+
+  height: 15px;
+}
 
 
 .selectctrl{
@@ -138,15 +162,7 @@
 }
 
 
-.navbar1 {
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(20, 20, 20);
-  color: white;
-  
-}
+
 .flexer{
   display: flex;
   flex-direction: row;
@@ -155,96 +171,11 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-.brand-title {
-  font-size: 1.5rem;
-  margin: .5rem;
-}
-
-.navbar-links {
-  height: 100%;
-}
-
-.navbar-links ul {
+.placement{
   display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-links li {
-  list-style: none;
-}
-
-.navbar-links li a {
-  display: block;
-  text-decoration: none;
-  color: white;
-  padding: 1rem;
-}
-
-.navbar-links li:hover {
-  background-color: #555;
-}
-
-
-.toggle-button {
-  position: absolute;
-  top: 1.2rem;
-  right: 1rem;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-}
-.mynav{
-  display: none;
-}
-
-
-@media (max-width: 450px){
-  .toggle-button{
-    display: flex;
-  }
-  .navbar-links{
-    width: 100%;
-    
-    display: none;
-  }
-  .brand-title{
-    left: 40%;
-  } 
-  .navbar1{
-    flex-direction: column;
-
-  }
-  .navbar-links ul {
-  flex-direction: column;
-  width: 100%;
-
-  }
-  .navbar-links li {
-  text-align: center;
-  }
-  
-  .navbar-links li a {
-    padding: 10px;
-  }
-  .navbar-links.active{
-    display: flex;
-  }
-
-  .mynav{
-    display: flex;
-  }
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  /* min-height:400px ; */
+ 
 }
